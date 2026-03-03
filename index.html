@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2Shot Caffee - Menu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F5F5;
+    --dark: #080808;
+    --espresso: #0E0E0E;
+    --caramel: #1A4D35;
+    --gold: #2A7A4A;
+    --light-gold: #3D9960;
+    --warm-white: #FFFFFF;
+    --text-muted: #999999;
+    --neon: #FFFFFF;
+    --neon-glow: rgba(255,255,255,0.6);
+    --accent: #2ECC71;
+    --accent-glow: rgba(46,204,113,0.5);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background-color: var(--espresso);
+    font-family: 'Tajawal', sans-serif;
+    color: var(--cream);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(ellipse at 20% 20%, rgba(46,204,113,0.06) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(46,204,113,0.04) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .page-wrapper { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
+  header { text-align: center; padding: 60px 20px 40px; }
+  .header-ornament { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 20px; }
+  .ornament-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); max-width: 120px; }
+  .ornament-diamond { width: 8px; height: 8px; background: var(--neon); transform: rotate(45deg); box-shadow: 0 0 8px rgba(46,204,113,0.6); background: var(--accent); }
+  .brand-name { font-family: 'Playfair Display', serif; font-size: clamp(52px,10vw,90px); font-weight: 900; color: var(--neon); letter-spacing: -1px; line-height: 0.9; text-shadow: 0 0 20px rgba(255,255,255,0.4), 0 0 40px rgba(46,204,113,0.3); }
+  .brand-sub { font-family: 'Playfair Display', serif; font-size: clamp(14px,3vw,20px); color: var(--neon); letter-spacing: 8px; text-transform: uppercase; margin-top: 8px; opacity: 0.7; }
+  .header-tagline { font-size: 13px; color: var(--text-muted); letter-spacing: 3px; text-transform: uppercase; margin-top: 16px; }
+  .category { margin-bottom: 50px; animation: fadeUp 0.6s ease both; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .category:nth-child(1){animation-delay:0.1s} .category:nth-child(2){animation-delay:0.2s} .category:nth-child(3){animation-delay:0.3s} .category:nth-child(4){animation-delay:0.4s} .category:nth-child(5){animation-delay:0.5s} .category:nth-child(6){animation-delay:0.6s} .category:nth-child(7){animation-delay:0.7s} .category:nth-child(8){animation-delay:0.8s} .category:nth-child(9){animation-delay:0.9s} .category:nth-child(10){animation-delay:1.0s}
+  .category-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid rgba(46,204,113,0.2); }
+  .category-icon { font-size: 22px; width: 44px; height: 44px; background: rgba(26,77,53,0.3); border: 1px solid rgba(46,204,113,0.5); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .category-title-ar { font-size: 22px; font-weight: 700; color: var(--accent); line-height: 1.2; }
+  .category-title-en { font-family: 'Playfair Display', serif; font-size: 13px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
+  .items-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px,1fr)); gap: 10px; }
+  .menu-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; transition: all 0.25s ease; cursor: default; }
+  .menu-item:hover { background: rgba(26,77,53,0.2); border-color: rgba(46,204,113,0.4); transform: translateY(-1px); }
+  .item-names { display: flex; flex-direction: column; gap: 2px; }
+  .item-name-ar { font-size: 14px; font-weight: 500; color: var(--cream); }
+  .item-name-en { font-size: 11px; color: var(--text-muted); font-family: 'Playfair Display', serif; font-style: italic; }
+  .item-price { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: var(--neon); white-space: nowrap; margin-right: 8px; color: var(--accent); text-shadow: 0 0 8px rgba(46,204,113,0.4); }
+  .item-price span { font-size: 10px; font-family: 'Tajawal', sans-serif; font-weight: 400; color: var(--text-muted); }
+  .addons-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); gap: 8px; }
+  .addon-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: rgba(26,77,53,0.1); border: 1px dashed rgba(255,255,255,0.12); border-radius: 6px; transition: all 0.2s; }
+  .addon-item:hover { background: rgba(26,77,53,0.25); border-color: rgba(46,204,113,0.4); }
+  footer { text-align: center; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 20px; }
+  .footer-brand { font-family: 'Playfair Display', serif; font-size: 28px; color: #FFFFFF; opacity: 0.4; letter-spacing: 2px; }
+  .footer-note { font-size: 12px; color: var(--text-muted); margin-top: 8px; letter-spacing: 1px; }
+  .seasonal-badge { font-size: 9px; background: rgba(46,204,113,0.15); color: var(--accent); border: 1px solid rgba(46,204,113,0.35); border-radius: 20px; padding: 2px 7px; margin-right: 6px; vertical-align: middle; }
+  .section-divider { text-align: center; margin: 10px 0 40px; position: relative; }
+  .section-divider::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(46,204,113,0.5), transparent); }
+  .section-divider span { background: var(--espresso); padding: 0 16px; position: relative; font-size: 18px; }
+
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 20px 0 10px;
+  }
+  .logo-container svg {
+    width: min(200px, 50vw);
+    height: auto;
+  }
+  .coffee-bar-sub {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(11px, 2.5vw, 15px);
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--accent);
+    opacity: 0.9;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+  <header>
+    <div class="logo-container">
+      <?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" style="filter: drop-shadow(0 0 6px rgba(255,255,255,0.5)) drop-shadow(0 0 14px rgba(46,204,113,0.3))" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1684.54 1577.16">
+  <path fill="#FFFFFF" d="M387.47,1470.14c-.55,1.33-2.56,1.56-5.32,2.24-3.59.71-7.67,1.19-11.38,1.6-78.92,9.81-134.84,14.55-209.49,32.39-10.21,2.81-18.64,5.82-23.9,8.98-6.71,4.03-8.27,8.33-1.81,12.79,107.12,36.75,274.95,33.2,375.81,42.69,202.74,10.95,356.58,8,527.35-11.79,44.63-7.03,163.77-10.58,189.37-41.65-29.54-34.68-177.77-35.22-243.1-48.92-7.73-4.06,12.3-12.69,15.18-15.45,48.95-31.77,92.67-72.38,127.99-118.74,5.11-6.3,9.17-13.62,15.69-18.52,187.73-21.93,393.12-95.29,510.04-255.88,45.29-78.31,42.69-194.23-23.28-261.76-28.88-30.94-76.83-48.87-120.24-51.91-27.19-1.57-76.07-1.86-78.69,10.54-7.61,26.42-14.06,53.31-20.31,80.09-4.27,14.99,8.36,13.4,18.34,10.82,40.06-8.93,88.28-3.66,116.84,28.45,88.78,123.64-100.77,238.11-206.19,280.68-26.07,9.76-79.27,30.35-96.65,27.96-4.73-1.4-1.21-9.26.04-12.77,45.1-107.65,72.97-268.85,64.21-389.75-.3-5.61-1.39-14.13,2.54-18.54,5.11-6.04,14.7-5.19,21.96-5.55,11.46-.35,22.9-.69,34.36-1.04,7.94-.18,18.2,0,21.85-8.53,2.07-4.82,1.36-11.49.95-16.73-1.42-20.31-2.9-40.64-4.35-60.98-.33-4.93-.85-10.24-3.23-14.56-2.81-5.5-9.45-7.16-15.29-6.71-88.12,3.12-176.77,6.32-264.72,11.91-11.65,2.49-15.26,14.28-15.09,24.86-2.77,50.6,42.22,90.83,91.51,84.69,16.17-3.1,12.06,13.88,12.75,24.2.25,34.66-1.18,68.24-4.44,103.24-17.42,143.88-37.26,306.1-136.18,414.69-134.11,136.18-348.85,157.18-526.14,95.32-183.06-60.31-346.23-233.04-388.59-440.17-50.79-192.93,34.25-254.77,220.34-221.93,5.93.09,10.78-.34,15.83-1.88,30.38-9.05,51.63-61.63,21.9-81.3-30.03-18.97-73.67-16.3-107.97-19.12-85.09-1.88-158.66-1.68-260.06,8.97-9.4,1.44-14.81,7.9-15.82,16.6-59.16,333.75,152.62,633.4,377.43,800.37l-.02.07Z"/>
+  <path fill="#FFFFFF" d="M670.96,683.6c1.08-.53,1.9-1.88,2.67-3.87.97-2.53,1.84-6.25,2.52-9.28,7.7-36.95,27.65-72.96,61.82-90.67,6.94-3.85,15.14-7.68,23.39-11.33,30.37-13.01,62.56-27.56,92.02-42.96,85.94-41.79,137.22-95.73,141.12-192.58.14-4.88-.6-13.38-6.7-6.17-8.32,10.57-15.63,21.33-24.82,31.52-45.13,54.68-106.15,81.64-171.16,111.7-19.06,8.97-37.98,17.44-57.05,26.38-18.77,8.91-38.19,17.67-52.89,32.65-35.7,35.14-51.11,88.17-27.82,134.73,2.66,4.61,10.79,21.88,16.82,19.92l.1-.05Z"/>
+  <path fill="#FFFFFF" d="M600.9,659.42c2.35-4.49-1.07-11.61-2.04-16.4-11.29-39.4-8.31-85.88,18.95-117.89,17.4-21.25,40.8-36.31,63.75-51.06,42.91-27.35,85.55-51.51,130.43-74.46,67.89-34.55,90.32-39.78,129.22-84.43,21.01-23.56,37.74-51.22,48.85-80.91,10.15-28.87,14.97-49.79,13.17-70.42-7.42-65.91-64.9-113.46-101.48-134.71-99.76-60.47-228.79-13.18-276.95,19.71-44.79,36.36-70.88,99.77-58.08,153.73,3.87,17.91,12.35,35.69,23.54,50.95,14.75,21.25,29.73,29.3,58.27,36.53,5.54,1.35,11.66,3.72,17.08,3.44,4.72-.68-1.47-7.06-2.89-9.34-18.43-23.49-26.79-56.55-19.87-86.11,4.08-19.57,12.53-36.8,27.57-49.72,32.68-29.06,83.81-30.78,121-9.44,19.87,11.02,37.71,28.67,43.25,50.86,8.08,31.02-11.48,59.14-31.64,80.9-23.31,25.12-53.36,51.42-82.88,66.82-35.3,19.23-71.48,29.2-105.39,52.16-45.44,32.82-97.24,84.6-101.62,146.41-1.46,31.02,11.01,62.84,29.86,86.52,10.29,12.32,23.35,22.37,37.22,30.77,4.36,2.39,16.61,10.53,20.59,6.2l.07-.1Z"/>
+  <path fill="#FFFFFF" d="M234.95,1126.52c-9.72,1.62,29.19,56.43,35,63.66,26.8,35.19,74.62,89.34,120.23,51.73,20.04-18.98,23.99-48.77,26.71-74.95,7.14-78.46-26.26-135.73-87.43-182.03-23.21-18.92-46.8-34.23-45.04-67.67,1.17-19.37,16.71-29.88,35.13-30.69,22.32-1.93,49.12,9.82,67.38-3.51,15.85-12.2,16.12-35.79,17.83-54.48,5.48-48.16-46.47-41.06-78.97-42.45-43.57-.73-75.24-6.45-113.74,20.07-82.73,57.08-35.59,176.31,43.88,239.22,21.86,17.69,43.46,38.52,47.75,67.47,1.34,10.29.53,22.63-6.75,30.65-7.78,8.7-20.94,7.96-30.64,2.99-7.83-3.71-14.68-9.06-20.77-13.66-2.89-2.04-7.63-6.05-10.46-6.35h-.11Z"/>
+  <path fill="#FFFFFF" d="M628.22,947.31c-8.62,8.05-21.56,6.93-32.63,7.53-19.9.91-35.82-.96-39.77-17.69-5.8-82.91-1.94-166.79-6.32-249.9.53-26.99-25.48-27.67-46.13-27.25-39.6-2.03-59.38-3.36-56.29,39.47,1.21,200.71-5.81,401.96-.07,602.44,1.87,9.55,5.91,17.97,12.99,24.22,12.88,11.26,30.52,14.02,46.63,18.73,13.58,4.02,32.54,9.61,38.52-.55,3.16-4.13,4.29-12.25,4.42-17.9,2.33-77.12,1.78-154.57,5.42-231.62.4-23.63,20.83-26.26,40.85-25.82,13.24-.59,30.96-.5,35.43,15.02,7.64,88.88,2.93,179.14,7.43,268.37-.52,18.29,9.62,33.83,28.71,36.1,9.69,1.66,19.9,1,29.71.1,14.21-1.15,29.32-.91,37.06-13.41,14.51-199.8,5.1-403.95,11.55-605.11.91-11.06-1.95-26.57-12.11-30.59-12.36-5.95-32.61-3.27-47.5-4.01-17.48-.23-39.37-2.47-44.85,16.06-6.09,58.12-2.41,117.21-5.65,175.6-.5,7-2.19,15.18-7.27,20.08l-.13.13Z"/>
+  <path fill="#FFFFFF" d="M1079.41,790.31c-24.54-61.76-82.22-129.48-155.76-117.38-73.11,14.86-105.73,90.46-127.24,156.42-34.6,115.26-35.7,266.81,2.91,378.47,12.6,35.32,31.16,72.93,58.72,97.48,48.21,45.32,118.94,31.77,161.89-13.22,41.69-42.17,66.23-103.62,79.49-161.55,23.72-110.21,21.9-235.61-19.93-340.05l-.07-.18ZM996.13,1104.01c-3.23,35.63-12.97,130.72-60.98,119.29-20.69-9-30.4-31.98-36.59-53.73-17.7-76.61-12.59-154.43-9.76-232.09,2.52-31.64,5.06-64.72,16.38-94.69,7.37-21.23,28.95-55.26,53.79-41.97,36.35,22.3,38.17,88.21,40.75,127.88,2.38,58.37,1.17,116.95-3.58,175.14v.17Z"/>
+</svg>
+    </div>
+    <div class="coffee-bar-sub">Coffee &amp; Bar</div>
+    <div class="header-ornament" style="margin-top:20px"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+    <div class="header-tagline">قائمة المشروبات والحلويات</div>
+  </header>
+  <div class="section-divider"><span>☕</span></div>
+
+  <!-- SMOOTHIES -->
+  <div class="category">
+    <div class="category-header"><div class="category-icon">🥤</div><div><div class="category-title-ar">سموزي</div><div class="category-title-en">Smoothie</div></div></div>
+    <div class="items-grid">
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">بلوبيري</span><span class="item-name-en">Blueberry</span></div><div class="item-price">35 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">بلو كولادا</span><span class="item-name-en">Blue Colada</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">مانجو</span><span class="item-name-en">Mango</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">ليمون نعناع</span><span class="item-name-en">Mint Lemon</span></div><div class="item-price">35 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">جيلي كولا</span><span class="item-name-en">Cola Jelly</span></div><div class="item-price">45 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">مانجو خوخ</span><span class="item-name-en">Peach Mango</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">بيري كولا</span><span class="item-name-en">Cola Berry</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">بطيخ <span class="seasonal-badge">موسمي</span></span><span class="item-name-en">Watermelon</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">باشن فروت</span><span class="item-name-en">Passion Fruit</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">تفاح</span><span class="item-name-en">Apple</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">خوخ</span><span class="item-name-en">Peach</span></div><div class="item-price">45 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">ميكس بيري</span><span class="item-name-en">Berry Mix</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">مانجو كيوي</span><span class="item-name-en">Kiwi Mango</span></div><div class="item-price">55 <span>ج</span></div></div>
+    </div>
+  </div>
+
+  <!-- SUNDAE -->
+  <div class="category">
+    <div class="category-header"><div class="category-icon">🍨</div><div><div class="category-title-ar">صنداي</div><div class="category-title-en">Sundae</div></div></div>
+    <div class="items-grid">
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">فانيلا</span><span class="item-name-en">Vanilla</span></div><div class="item-price">30 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">فراولة</span><span class="item-name-en">Strawberry</span></div><div class="item-price">35 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">بلوبيري</span><span class="item-name-en">Blueberry</span></div><div class="item-price">35 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">كراميل</span><span class="item-name-en">Caramel</span></div><div class="item-price">35 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">شوكولاتة</span><span class="item-name-en">Chocolate</span></div><div class="item-price">35 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">نوتيلا</span><span class="item-name-en">Nutella</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">أوريو</span><span class="item-name-en">Oreo</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">فستق</span><span class="item-name-en">Pistachio</span></div><div class="item-price">50 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">إسبريسو جيلاتو</span><span class="item-name-en">Espresso Gelato</span></div><div class="item-price">30 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">تفاح</span><span class="item-name-en">Apple</span></div><div class="item-price">35 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">باشن</span><span class="item-name-en">Passion</span></div><div class="item-price">35 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">وايت شوكليت</span><span class="item-name-en">White Chocolate</span></div><div class="item-price">35 <span>ج</span></div></div>
+    </div>
+  </div>
+
+  <!-- FRESH JUICES -->
+  <div class="category">
+    <div class="category-header"><div class="category-icon">🍊</div><div><div class="category-title-ar">عصائر فريش</div><div class="category-title-en">Fresh Juices</div></div></div>
+    <div class="items-grid">
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">برتقال</span><span class="item-name-en">Orange</span></div><div class="item-price">35 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">مانجو</span><span class="item-name-en">Mango</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">فراولة</span><span class="item-name-en">Strawberry</span></div><div class="item-price">35 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">موز باللبن</span><span class="item-name-en">Banana with Milk</span></div><div class="item-price">35 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">كيوي</span><span class="item-name-en">Kiwi</span></div><div class="item-price">60 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">مانجو كيوي</span><span class="item-name-en">Kiwi Mango</span></div><div class="item-price">50 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">أفوكادو</span><span class="item-name-en">Avocado</span></div><div class="item-price">80 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">أفوكادو كاجو</span><span class="item-name-en">Cashew Avocado</span></div><div class="item-price">90 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">كاجو فانيليا</span><span class="item-name-en">Vanilla Cashew</span></div><div class="item-price">60 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">بلح باللبن</span><span class="item-name-en">Dates with Milk</span></div><div class="item-price">35 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">ليمون نعناع</span><span class="item-name-en">Mint Lemon</span></div><div class="item-price">35 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">زبادي فواكه</span><span class="item-name-en">Fruit Yogurt</span></div><div class="item-price">45 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">جوافة</span><span class="item-name-en">Guava</span></div><div class="item-price">30 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">بطيخ <span class="seasonal-badge">موسمي</span></span><span class="item-name-en">Watermelon</span></div><div class="item-price">30 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">كاجو فانيليا جوز</span><span class="item-name-en">Nut Vanilla Cashew</span></div><div class="item-price">75 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">كراميلة مانجو موز</span><span class="item-name-en">Banana Mango Caramel</span></div><div class="item-price">70 <span>ج</span></div></div>
+    </div>
+  </div>
+
+  <!-- ICE COFFEE -->
+  <div class="category">
+    <div class="category-header"><div class="category-icon">🧊</div><div><div class="category-title-ar">آيس كوفي كينوس</div><div class="category-title-en">Kinos Ice Coffee</div></div></div>
+    <div class="items-grid">
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">كراميل</span><span class="item-name-en">Caramel</span></div><div class="item-price">50 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">فانيلا</span><span class="item-name-en">Vanilla</span></div><div class="item-price">50 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">ماتشا</span><span class="item-name-en">Matcha</span></div><div class="item-price">60 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">قهوة بلاك</span><span class="item-name-en">Black Coffee</span></div><div class="item-price">35 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">فستق</span><span class="item-name-en">Pistachio</span></div><div class="item-price">65 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">بندق</span><span class="item-name-en">Hazelnut</span></div><div class="item-price">50 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">نوتيلا</span><span class="item-name-en">Nutella</span></div><div class="item-price">60 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">وايت شوكليت</span><span class="item-name-en">White Chocolate</span></div><div class="item-price">50 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">سبانش لاتيه</span><span class="item-name-en">Spanish Latte</span></div><div class="item-price">60 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">جوزهند وايت شوكليت</span><span class="item-name-en">Coconut White Choco</span></div><div class="item-price">50 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">نوت شوكليت كراميل</span><span class="item-name-en">Caramel Choco Nut</span></div><div class="item-price">50 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">آيس تي خوخ</span><span class="item-name-en">Ice Peach Tea</span></div><div class="item-price">35 <span>ج</span></div></div>
+    </div>
+  </div>
+
+  <!-- HOT DRINKS -->
+  <div class="category">
+    <div class="category-header"><div class="category-icon">☕</div><div><div class="category-title-ar">مشروبات ساخنة</div><div class="category-title-en">Hot Drinks</div></div></div>
+    <div class="items-grid">
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">قهوة تركي</span><span class="item-name-en">Turkish Coffee</span></div><div class="item-price">20 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">إسبريسو</span><span class="item-name-en">Espresso</span></div><div class="item-price">25 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">ماكياتو</span><span class="item-name-en">Macchiato</span></div><div class="item-price">30 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">كابتشينو</span><span class="item-name-en">Cappuccino</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">لاتيه</span><span class="item-name-en">Latte</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">فلات وايت</span><span class="item-name-en">Flat White</span></div><div class="item-price">45 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">قهوة بندق</span><span class="item-name-en">Hazelnut Coffee</span></div><div class="item-price">35 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">قهوة فرنساوي</span><span class="item-name-en">French Coffee</span></div><div class="item-price">35 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">موكا</span><span class="item-name-en">Mocha</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">وايت موكا</span><span class="item-name-en">White Mocha</span></div><div class="item-price">35 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">نسكافيه بلاك</span><span class="item-name-en">Black Nescafe</span></div><div class="item-price">25 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">نسكافيه باللبن</span><span class="item-name-en">Nescafe with Milk</span></div><div class="item-price">30 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">هوت شوكليت</span><span class="item-name-en">Hot Chocolate</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">هوت أوريو</span><span class="item-name-en">Hot Oreo</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">أمريكان بلاك</span><span class="item-name-en">Black American</span></div><div class="item-price">25 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">هوت أبل سيدر</span><span class="item-name-en">Hot Apple Cider</span></div><div class="item-price">35 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">هوت أبل سبايس</span><span class="item-name-en">Hot Apple Spice</span></div><div class="item-price">45 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">شاي نكهات</span><span class="item-name-en">Flavored Tea</span></div><div class="item-price">10 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">سحلب نوتيلا</span><span class="item-name-en">Nutella Sahlab</span></div><div class="item-price">15 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">قهوة نوتيلا</span><span class="item-name-en">Nutella Coffee</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">كراميل لاتيه</span><span class="item-name-en">Caramel Latte</span></div><div class="item-price">45 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">هوت وايت شوكليت</span><span class="item-name-en">Hot White Chocolate</span></div><div class="item-price">45 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">شاي كرك</span><span class="item-name-en">Karak Tea</span></div><div class="item-price">25 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">هوت لوتس</span><span class="item-name-en">Hot Lotus</span></div><div class="item-price">45 <span>ج</span></div></div>
+    </div>
+  </div>
+
+  <!-- MILKSHAKE -->
+  <div class="category">
+    <div class="category-header"><div class="category-icon">🥛</div><div><div class="category-title-ar">ميلك شيك</div><div class="category-title-en">Milkshake</div></div></div>
+    <div class="items-grid">
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">أوريو</span><span class="item-name-en">Oreo</span></div><div class="item-price">60 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">فراولة</span><span class="item-name-en">Strawberry</span></div><div class="item-price">60 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">مانجو</span><span class="item-name-en">Mango</span></div><div class="item-price">60 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">بلوبيري</span><span class="item-name-en">Blueberry</span></div><div class="item-price">60 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">لوتس</span><span class="item-name-en">Lotus</span></div><div class="item-price">80 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">فستق</span><span class="item-name-en">Pistachio</span></div><div class="item-price">80 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">فانيلا</span><span class="item-name-en">Vanilla</span></div><div class="item-price">60 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">كراميل</span><span class="item-name-en">Caramel</span></div><div class="item-price">60 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">شوكليت</span><span class="item-name-en">Chocolate</span></div><div class="item-price">55 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">باونتي</span><span class="item-name-en">Bounty</span></div><div class="item-price">80 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">سنيكرز</span><span class="item-name-en">Snickers</span></div><div class="item-price">80 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">أوريو وايت شوكليت</span><span class="item-name-en">Oreo White Choco</span></div><div class="item-price">60 <span>ج</span></div></div>
+    </div>
+  </div>
+
+  <!-- ITALIAN SODA -->
+  <div class="category">
+    <div class="category-header"><div class="category-icon">🫧</div><div><div class="category-title-ar">إيطاليان صودا</div><div class="category-title-en">Italian Soda</div></div></div>
+    <div class="items-grid">
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">بلوبيري</span><span class="item-name-en">Blueberry</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">سكوتش مينت</span><span class="item-name-en">Scotch Mint</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">موهيتو</span><span class="item-name-en">Mojito</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">جرين أبل</span><span class="item-name-en">Green Apple</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">سوفت بلو كروساو</span><span class="item-name-en">Blue Curacao Soft</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">رمان</span><span class="item-name-en">Pomegranate</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">باشن</span><span class="item-name-en">Passion</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">بيري كولا</span><span class="item-name-en">Cola Berry</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">بلاك بيري</span><span class="item-name-en">Black Berry</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">مشروبات نكهات</span><span class="item-name-en">Flavored Drinks</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">ريد بول نكهات</span><span class="item-name-en">Flavored Red Bull</span></div><div class="item-price">65 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">فراولة</span><span class="item-name-en">Strawberry</span></div><div class="item-price">40 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">شيري</span><span class="item-name-en">Cherry</span></div><div class="item-price">40 <span>ج</span></div></div>
+    </div>
+  </div>
+
+  <!-- FRAPPUCCINO -->
+  <div class="category">
+    <div class="category-header"><div class="category-icon">🧋</div><div><div class="category-title-ar">فرابيتشينو</div><div class="category-title-en">Frappuccino</div></div></div>
+    <div class="items-grid">
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">كراميل</span><span class="item-name-en">Caramel</span></div><div class="item-price">65 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">موكا</span><span class="item-name-en">Mocha</span></div><div class="item-price">65 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">وايت موكا</span><span class="item-name-en">White Mocha</span></div><div class="item-price">65 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">وايت شوكليت كراميل</span><span class="item-name-en">White Choco Caramel</span></div><div class="item-price">65 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">ماتشا</span><span class="item-name-en">Matcha</span></div><div class="item-price">70 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">لوتس</span><span class="item-name-en">Lotus</span></div><div class="item-price">90 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">فستق</span><span class="item-name-en">Pistachio</span></div><div class="item-price">90 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">لاتيه</span><span class="item-name-en">Latte</span></div><div class="item-price">55 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">بندق</span><span class="item-name-en">Hazelnut</span></div><div class="item-price">60 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">جوزهند وايت شوكليت</span><span class="item-name-en">Coconut White Choco</span></div><div class="item-price">60 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">دبل إسبريسو</span><span class="item-name-en">Double Espresso</span></div><div class="item-price">60 <span>ج</span></div></div>
+    </div>
+  </div>
+
+  <!-- DESSERT -->
+  <div class="category">
+    <div class="category-header"><div class="category-icon">🍰</div><div><div class="category-title-ar">ديزيرت / حلويات</div><div class="category-title-en">Dessert</div></div></div>
+    <div class="items-grid">
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">مولتن كيك</span><span class="item-name-en">Molten Cake</span></div><div class="item-price">70 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">مولتن كيك آيس كريم</span><span class="item-name-en">Molten Cake Ice Cream</span></div><div class="item-price">75 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">تشيز كيك سادة</span><span class="item-name-en">Plain Cheesecake</span></div><div class="item-price">45 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">تشيز كيك فراولة</span><span class="item-name-en">Strawberry Cheesecake</span></div><div class="item-price">50 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">تشيز كيك أوريو</span><span class="item-name-en">Oreo Cheesecake</span></div><div class="item-price">50 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">تشيز كيك بلوبيري</span><span class="item-name-en">Blueberry Cheesecake</span></div><div class="item-price">50 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">تشيز كيك لوتس</span><span class="item-name-en">Lotus Cheesecake</span></div><div class="item-price">50 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">تشيز شوكليت</span><span class="item-name-en">Choco Cheesecake</span></div><div class="item-price">50 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">تشيز نوتيلا</span><span class="item-name-en">Nutella Cheesecake</span></div><div class="item-price">60 <span>ج</span></div></div>
+      <div class="menu-item"><div class="item-names"><span class="item-name-ar">تشيز كيك فستق</span><span class="item-name-en">Pistachio Cheesecake</span></div><div class="item-price">70 <span>ج</span></div></div>
+    </div>
+  </div>
+
+  <!-- ADD-ONS -->
+  <div class="category">
+    <div class="category-header"><div class="category-icon">✨</div><div><div class="category-title-ar">الإضافات</div><div class="category-title-en">Add-ons</div></div></div>
+    <div class="addons-grid">
+      <div class="addon-item"><div class="item-names"><span class="item-name-ar">فليفر</span><span class="item-name-en">Flavor</span></div><div class="item-price">15 <span>ج</span></div></div>
+      <div class="addon-item"><div class="item-names"><span class="item-name-ar">صوص</span><span class="item-name-en">Sauce</span></div><div class="item-price">15 <span>ج</span></div></div>
+      <div class="addon-item"><div class="item-names"><span class="item-name-ar">بوبا</span><span class="item-name-en">Boba</span></div><div class="item-price">20 <span>ج</span></div></div>
+      <div class="addon-item"><div class="item-names"><span class="item-name-ar">عسل</span><span class="item-name-en">Honey</span></div><div class="item-price">10 <span>ج</span></div></div>
+      <div class="addon-item"><div class="item-names"><span class="item-name-ar">لبن</span><span class="item-name-en">Milk</span></div><div class="item-price">15 <span>ج</span></div></div>
+      <div class="addon-item"><div class="item-names"><span class="item-name-ar">كاجو</span><span class="item-name-en">Cashew</span></div><div class="item-price">30 <span>ج</span></div></div>
+      <div class="addon-item"><div class="item-names"><span class="item-name-ar">نوتيلا</span><span class="item-name-en">Nutella</span></div><div class="item-price">25 <span>ج</span></div></div>
+      <div class="addon-item"><div class="item-names"><span class="item-name-ar">فستق</span><span class="item-name-en">Pistachio</span></div><div class="item-price">25 <span>ج</span></div></div>
+      <div class="addon-item"><div class="item-names"><span class="item-name-ar">حليب مكثف</span><span class="item-name-en">Condensed Milk</span></div><div class="item-price">20 <span>ج</span></div></div>
+      <div class="addon-item"><div class="item-names"><span class="item-name-ar">شوت إسبريسو</span><span class="item-name-en">Espresso Shot</span></div><div class="item-price">10 <span>ج</span></div></div>
+      <div class="addon-item"><div class="item-names"><span class="item-name-ar">كوب ثلج</span><span class="item-name-en">Ice Cup</span></div><div class="item-price">15 <span>ج</span></div></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="header-ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+    <div class="footer-brand">2Shot Caffee</div>
+    <div class="footer-note">الأسعار بالجنيه المصري · جميع الحقوق محفوظة</div>
+  </footer>
+</div>
+</body>
+</html>
