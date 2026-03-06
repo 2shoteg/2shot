@@ -1,7 +1,7 @@
 name: 🔄 تحديث المنيو من Google Sheets
 
 on:
-  workflow_dispatch:  # تشغيل يدوي بنقرة واحدة
+  workflow_dispatch:
 
 jobs:
   update-menu:
@@ -28,6 +28,7 @@ jobs:
         run: |
           git config user.name "GitHub Action"
           git config user.email "action@github.com"
+          git pull --rebase
           git add menu.html
           git diff --staged --quiet || git commit -m "🔄 تحديث المنيو تلقائياً من Google Sheets"
           git push
