@@ -570,7 +570,7 @@ function renderOrderList(){
     groups[cat].push({id, i, itemName});
   });
   Object.entries(groups).forEach(([cat, items])=>{
-    html += `<div style="font-size:11px;font-weight:700;color:var(--accent);letter-spacing:1px;padding:10px 0 4px;opacity:.7;border-bottom:1px solid rgba(46,204,113,.15)">${cat}</div>`;
+    html += `<div style="font-size:11px;font-weight:700;color:var(--accent);letter-spacing:0;padding:10px 0 4px;opacity:.7;border-bottom:1px solid rgba(46,204,113,.15)">${cat}</div>`;
     items.forEach(({id, i, itemName})=>{
       const sub = i.price * i.qty;
       total += sub;
