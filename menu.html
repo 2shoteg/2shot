@@ -466,23 +466,56 @@ function showCat(catId){
   <div class="items-grid">`;
 
   cat.items.forEach((item, idx)=>{
-    const id = mkId(catId,"i",idx);
-    const qty = cart[id] ? cart[id].qty : 0;
     const badge = item.b ? '<span class="badge">موسمي</span>' : "";
-    html += `<div class="menu-item ${qty>0?"has-qty":""}" id="el_${id}">
-      <div class="item-left">
-        <div class="item-name-ar">${item.ar}${badge}</div>
-        <div class="item-name-en">${item.en}</div>
-      </div>
-      <div class="item-right">
-        <div class="item-price">${item.p} <span>ج</span></div>
-        <div class="qty-row">
-          <button class="qty-btn" onclick="chg('${id}','${item.ar}',${item.p},-1,'${cat.ar}')">−</button>
-          <span class="qty-num" id="q_${id}">${qty}</span>
-          <button class="qty-btn" onclick="chg('${id}','${item.ar}',${item.p},1,'${cat.ar}')">+</button>
+    if(item.pm && item.pl){
+      const idM = mkId(catId,"i",idx)+"_m";
+      const idL = mkId(catId,"i",idx)+"_l";
+      const qtyM = cart[idM] ? cart[idM].qty : 0;
+      const qtyL = cart[idL] ? cart[idL].qty : 0;
+      html += `<div class="menu-item" id="el_${idM}${idL}">
+        <div class="item-left">
+          <div class="item-name-ar">${item.ar}${badge}</div>
+          <div class="item-name-en">${item.en}</div>
         </div>
-      </div>
-    </div>`;
+        <div class="item-right" style="width:100%">
+          <div style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap">
+            <div style="text-align:center">
+              <div class="item-price" style="font-size:12px">M · ${item.pm} <span>ج</span></div>
+              <div class="qty-row">
+                <button class="qty-btn" onclick="chg('${idM}','${item.ar} (M)',${item.pm},-1,'${cat.ar}')">−</button>
+                <span class="qty-num" id="q_${idM}">${qtyM}</span>
+                <button class="qty-btn" onclick="chg('${idM}','${item.ar} (M)',${item.pm},1,'${cat.ar}')">+</button>
+              </div>
+            </div>
+            <div style="text-align:center">
+              <div class="item-price" style="font-size:12px">L · ${item.pl} <span>ج</span></div>
+              <div class="qty-row">
+                <button class="qty-btn" onclick="chg('${idL}','${item.ar} (L)',${item.pl},-1,'${cat.ar}')">−</button>
+                <span class="qty-num" id="q_${idL}">${qtyL}</span>
+                <button class="qty-btn" onclick="chg('${idL}','${item.ar} (L)',${item.pl},1,'${cat.ar}')">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    } else {
+      const id = mkId(catId,"i",idx);
+      const qty = cart[id] ? cart[id].qty : 0;
+      html += `<div class="menu-item ${qty>0?"has-qty":""}" id="el_${id}">
+        <div class="item-left">
+          <div class="item-name-ar">${item.ar}${badge}</div>
+          <div class="item-name-en">${item.en}</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">${item.p} <span>ج</span></div>
+          <div class="qty-row">
+            <button class="qty-btn" onclick="chg('${id}','${item.ar}',${item.p},-1,'${cat.ar}')">−</button>
+            <span class="qty-num" id="q_${id}">${qty}</span>
+            <button class="qty-btn" onclick="chg('${id}','${item.ar}',${item.p},1,'${cat.ar}')">+</button>
+          </div>
+        </div>
+      </div>`;
+    }
   });
 
   html += `</div>`;
