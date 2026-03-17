@@ -42,7 +42,12 @@ def parse_data(rows):
         entry = {'ar': name_ar, 'en': name_en, 'p': int(price)}
         price_m = row.get('price_m', '').strip()
         price_l = row.get('price_l', '').strip()
-        if price_m and price_l:
+        price_xl = row.get('price_xl', '').strip()
+        if price_m and price_l and price_xl:
+            entry['pm'] = int(price_m)
+            entry['pl'] = int(price_l)
+            entry['pxl'] = int(price_xl)
+        elif price_m and price_l:
             entry['pm'] = int(price_m)
             entry['pl'] = int(price_l)
         if seasonal == '1':
@@ -66,6 +71,7 @@ def build_cats_js(cats, cat_order):
             s = re.sub(r'"b":', 'b:', s)
             s = re.sub(r'"pm":', 'pm:', s)
             s = re.sub(r'"pl":', 'pl:', s)
+            s = re.sub(r'"pxl":', 'pxl:', s)
             return s
         lines.append(
             f'  {cid}:{{icon:"{c["icon"]}",ar:"{c["ar"]}",en:"{c["en"]}",\n'
