@@ -194,7 +194,7 @@ footer{text-align:center;padding:40px 20px;border-top:1px solid rgba(255,255,255
 
     <div class="grid">
       <div class="cat-card" onclick="showCat('hot')"><span class="ci">☕</span><span class="ca">مشروبات ساخنة</span><span class="ce">Hot Drinks</span></div>
-      <div class="cat-card" onclick="showCat('ice')"><span class="ci">🧊</span><span class="ca">آيس كوفي كيوبس</span><span class="ce">Ice Coffee Cubes</span></div>
+      <div class="cat-card" onclick="showCat('ice')"><span class="ci">🧊</span><span class="ca">آيس كوفي</span><span class="ce">Ice Coffee</span></div>
       <div class="cat-card" onclick="showCat('frapp')"><span class="ci">🧋</span><span class="ca">فرابيتشينو</span><span class="ce">Frappuccino</span></div>
       <div class="cat-card" onclick="showCat('milkshake')"><span class="ci">🥛</span><span class="ca">ميلك شيك</span><span class="ce">Milkshake</span></div>
       <div class="cat-card" onclick="showCat('smoothie')"><span class="ci">🥤</span><span class="ca">سموزي</span><span class="ce">Smoothie</span></div>
@@ -205,6 +205,7 @@ footer{text-align:center;padding:40px 20px;border-top:1px solid rgba(255,255,255
       <div class="cat-card" onclick="showCat('pancake')"><span class="ci">🥞</span><span class="ca">بانكيك</span><span class="ce">Pancake</span></div>
       <div class="cat-card" onclick="showCat('croissant')"><span class="ci">🥐</span><span class="ca">كروسان</span><span class="ce">Croissant</span></div>
       <div class="cat-card" onclick="showCat('dessert')"><span class="ci">🍰</span><span class="ca">ديزيرت / حلويات</span><span class="ce">Dessert</span></div>
+    
     
     
     
@@ -311,6 +312,7 @@ footer{text-align:center;padding:40px 20px;border-top:1px solid rgba(255,255,255
     
     
     
+    
     </div>
     <footer>
       <div style="text-align:center;margin-bottom:10px;margin-right:-10px"><svg id="Layer_1" style="width:70px;height:auto;filter: drop-shadow(0 0 6px rgba(255,255,255,0.5)) drop-shadow(0 0 14px rgba(255,255,255,0.3))" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1684.54 1577.16">
@@ -364,7 +366,7 @@ const cats = {
   hot:{icon:"☕",ar:"مشروبات ساخنة",en:"Hot Drinks",
     items:[{ar: "قهوة تركي", en: "Turkish Coffee", p: 0, pm: 20, pl: 35}, {ar: "شاي نكهات", en: "Flavored Tea", p: 0, pm: 15, pl: 20}, {ar: "سحلب", en: "Sahlab", p: 0, pm: 35, pl: 50}, {ar: "شاي كرك", en: "Karak Tea", p: 40}, {ar: "إسبريسو", en: "Espresso", p: 0, pm: 35, pl: 45}, {ar: "أمريكان بلاك", en: "American Black", p: 50}, {ar: "نسكافيه بلاك", en: "Nescafe Black", p: 30}, {ar: "نسكافيه باللبن", en: "Nescafe with Milk", p: 35}, {ar: "ماكياتو", en: "Macchiato", p: 0, pm: 40, pl: 50}, {ar: "قهوة فرنساوي", en: "French Coffee", p: 35}, {ar: "سبانيش لاتيه", en: "Spanish Latte", p: 95}, {ar: "قهوة بندق", en: "Hazelnut Coffee", p: 35}, {ar: "هوت أبل سيدر", en: "Hot Apple Cider", p: 40}, {ar: "كابتشينو", en: "Cappuccino", p: 65}, {ar: "لاتيه", en: "Latte", p: 65}, {ar: "موكا وايت", en: "Mocha", p: 75}, {ar: "موكا دارك", en: "Mocha", p: 75}, {ar: "هوت شوكليت", en: "Hot Chocolate", p: 60}, {ar: "هوت أوريو", en: "Hot Oreo", p: 65}, {ar: "كراميل لاتيه", en: "Caramel Latte", p: 95}, {ar: "فلات وايت", en: "Flat White", p: 65}, {ar: "هوت وايت شوكليت", en: "Hot White Chocolate", p: 65}, {ar: "هوت لوتس", en: "Hot Lotus", p: 75}, {ar: "هوت أبل سبايس", en: "Hot Apple Spice", p: 50}],
     addons:[{ar: "شوت إسبريسو إضافي", en: "Extra Espresso Shot", p: 30}, {ar: "حليب", en: "Milk", p: 15}, {ar: "حليب مكثف", en: "Condensed Milk", p: 20}, {ar: "صوص", en: "Sauce", p: 20}, {ar: "نوتيلا", en: "Nutella", p: 25}, {ar: "فستق", en: "Pistachio", p: 25}]},
-  ice:{icon:"🧊",ar:"آيس كوفي كيوبس",en:"Ice Coffee Cubes",
+  ice:{icon:"🧊",ar:"آيس كوفي",en:"Ice Coffee",
     items:[{ar: "قهوة بلاك", en: "Black Coffee", p: 55}, {ar: "آيس تي خوخ", en: "Peach Ice Tea", p: 45}, {ar: "فانيليا", en: "Vanilla", p: 75}, {ar: "وايت شوكليت", en: "White Chocolate", p: 90}, {ar: "كراميل", en: "Caramel", p: 85}, {ar: "بندق", en: "Hazelnut", p: 75}, {ar: "جوزهند وايت شوكليت", en: "Coconut White Choco", p: 110}, {ar: "وايت شوكليت كراميل", en: "Caramel White Chocolate", p: 90}, {ar: "نوتيلا", en: "Nutella", p: 95}, {ar: "سبانش لاتيه", en: "Spanish Latte", p: 100}, {ar: "ماتشا", en: "Matcha", p: 90}, {ar: "فستق", en: "Pistachio", p: 75}],
     addons:[{ar: "شوت إسبريسو إضافي", en: "Extra Espresso Shot", p: 30}, {ar: "صوص", en: "Sauce", p: 20}, {ar: "حليب مكثف", en: "Condensed Milk", p: 20}, {ar: "حليب", en: "Milk", p: 15}, {ar: "كوب ثلج", en: "Ice Cup", p: 15}]},
   frapp:{icon:"🧋",ar:"فرابيتشينو",en:"Frappuccino",
