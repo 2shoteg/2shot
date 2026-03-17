@@ -88,8 +88,7 @@ body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellips
 .sz-pill .sz-n{font-size:10px;font-weight:900;color:#888;transition:color .15s}
 .sz-pill .sz-p{font-size:10px;font-weight:700;color:#2ECC71}
 .sz-pill .sz-mu{font-size:9px;color:#555}
-.sz-pill .sz-cnt{font-size:11px;font-weight:900;color:#2ECC71;background:rgba(46,204,113,.15);border-radius:10px;padding:0 5px;min-width:14px;text-align:center;display:none}
-.sz-pill.has .sz-cnt{display:inline-block}
+.sz-pill .sz-cnt{font-size:11px;font-weight:900;color:#2ECC71;min-width:16px;text-align:center;display:inline-block}
 .sz-pill.has .sz-n{color:#2ECC71}
 .sz-qb{width:20px;height:20px;border-radius:50%;border:1px solid rgba(46,204,113,.4);background:rgba(26,77,53,.2);color:#2ECC71;font-size:14px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0;line-height:1;padding:0}
 .sz-qb:active{background:#2ECC71;color:#000}
@@ -186,7 +185,6 @@ footer{text-align:center;padding:40px 20px;border-top:1px solid rgba(255,255,255
       <div class="cat-card" onclick="showCat('pancake')"><span class="ci">🥞</span><span class="ca">بانكيك</span><span class="ce">Pancake</span></div>
       <div class="cat-card" onclick="showCat('croissant')"><span class="ci">🥐</span><span class="ca">كروسان</span><span class="ce">Croissant</span></div>
       <div class="cat-card" onclick="showCat('dessert')"><span class="ci">🍰</span><span class="ca">ديزيرت / حلويات</span><span class="ce">Dessert</span></div>
-    
     
     
     
@@ -313,7 +311,6 @@ footer{text-align:center;padding:40px 20px;border-top:1px solid rgba(255,255,255
     
     
     
-    
     </div>
     <footer>
       <div style="text-align:center;margin-bottom:10px;margin-right:-10px"><svg id="Layer_1" style="width:70px;height:auto;filter: drop-shadow(0 0 6px rgba(255,255,255,0.5)) drop-shadow(0 0 14px rgba(255,255,255,0.3))" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1684.54 1577.16">
@@ -386,7 +383,7 @@ const cats = {
     items:[{ar: "موهيتو", en: "Mojito", p: 0, pm: 50, pl: 65}, {ar: "جرين أبل", en: "Green Apple", p: 0, pm: 50, pl: 65}, {ar: "فراولة", en: "Strawberry", p: 0, pm: 50, pl: 65}, {ar: "شيري", en: "Cherry", p: 0, pm: 50, pl: 65}, {ar: "باشن", en: "Passion", p: 0, pm: 50, pl: 65}, {ar: "بيري كولا", en: "Berry Cola", p: 0, pm: 50, pl: 65}, {ar: "بلاك بيري", en: "Black Berry", p: 0, pm: 50, pl: 65}, {ar: "رمان", en: "Pomegranate", p: 0, pm: 50, pl: 65}, {ar: "بلوبيري", en: "Blueberry", p: 0, pm: 50, pl: 65}, {ar: "سوفت بلو كيوراساو", en: "Soft Blue Curacao", p: 0, pm: 50, pl: 65}, {ar: "ريد بول نكهات", en: "Red Bull Flavored", p: 0, pm: 95, pl: 110}],
     addons:[{ar: "صوص", en: "Sauce", p: 20}, {ar: "كوب ثلج", en: "Ice Cup", p: 15}]},
   icecream:{icon:"🍦",ar:"آيس كريم",en:"Ice Cream",
-    items:[{ar: "إسبريسو جيلاتو", en: "Espresso Gelato", p: 0, pm: 45, pl: 70, pxl: 90}, {ar: "فانيلا", en: "Vanilla", p: 0, pm: 45, pl: 70, pxl: 90}, {ar: "تفاح", en: "Apple", p: 0, pm: 45, pl: 70, pxl: 90}, {ar: "باشن", en: "Passion", p: 0, pm: 45, pl: 70, pxl: 90}, {ar: "فراولة", en: "Strawberry", p: 0, pm: 45, pl: 70, pxl: 90}, {ar: "بلوبيري", en: "Blueberry", p: 0, pm: 45, pl: 70, pxl: 90}, {ar: "كراميل", en: "Caramel", p: 0, pm: 45, pl: 70, pxl: 90}, {ar: "شوكولاتة", en: "Chocolate", p: 0, pm: 45, pl: 70, pxl: 90}, {ar: "وايت شوكليت", en: "White Chocolate", p: 0, pm: 45, pl: 70, pxl: 90}, {ar: "نوتيلا", en: "Nutella", p: 0, pm: 45, pl: 70, pxl: 90}, {ar: "أوريو", en: "Oreo", p: 0, pm: 45, pl: 70, pxl: 90}, {ar: "بستاشيو", en: "Pistachio", p: 0, pm: 65, pl: 95, pxl: 120}],
+    items:[{ar: "إسبريسو جيلاتو", en: "Espresso Gelato", p: 0, pm: 45, pl: 70}, {ar: "فانيلا", en: "Vanilla", p: 0, pm: 45, pl: 70}, {ar: "تفاح", en: "Apple", p: 0, pm: 45, pl: 70}, {ar: "باشن", en: "Passion", p: 0, pm: 45, pl: 70}, {ar: "فراولة", en: "Strawberry", p: 0, pm: 45, pl: 70}, {ar: "بلوبيري", en: "Blueberry", p: 0, pm: 45, pl: 70}, {ar: "كراميل", en: "Caramel", p: 0, pm: 45, pl: 70}, {ar: "شوكولاتة", en: "Chocolate", p: 0, pm: 45, pl: 70}, {ar: "وايت شوكليت", en: "White Chocolate", p: 0, pm: 45, pl: 70}, {ar: "نوتيلا", en: "Nutella", p: 0, pm: 45, pl: 70}, {ar: "أوريو", en: "Oreo", p: 0, pm: 45, pl: 70}, {ar: "بستاشيو", en: "Pistachio", p: 0, pm: 65, pl: 95}],
     addons:[{ar: "صوص", en: "Sauce", p: 20}, {ar: "نوتيلا", en: "Nutella", p: 25}, {ar: "فستق", en: "Pistachio", p: 25}, {ar: "كاجو", en: "Cashew", p: 35}, {ar: "عسل", en: "Honey", p: 15}, {ar: "حليب مكثف", en: "Condensed Milk", p: 20}, {ar: "بوبا", en: "Boba", p: 20}]},
   waffle:{icon:"🧇",ar:"وافل",en:"Waffle",
     items:[{ar: "تفاح", en: "Apple", p: 0, pm: 40, pl: 75}, {ar: "موز", en: "Banana", p: 0, pm: 40, pl: 75}, {ar: "فراولة", en: "Strawberry", p: 0, pm: 45, pl: 80}, {ar: "مانجو", en: "Mango", p: 0, pm: 45, pl: 85}, {ar: "أناناس", en: "Pineapple", p: 0, pm: 50, pl: 85}, {ar: "كيوي", en: "Kiwi", p: 0, pm: 50, pl: 85}, {ar: "بلوبيري", en: "Blueberry", p: 0, pm: 50, pl: 85}, {ar: "كراميل", en: "Caramel", p: 0, pm: 55, pl: 90}, {ar: "وايت شوكليت", en: "White Chocolate", p: 0, pm: 55, pl: 90}, {ar: "دارك شوكليت", en: "Dark Chocolate", p: 0, pm: 55, pl: 90}, {ar: "نوتيلا", en: "Nutella", p: 0, pm: 60, pl: 90}, {ar: "أوريو", en: "Oreo", p: 0, pm: 65, pl: 85}, {ar: "لوتس", en: "Lotus", p: 0, pm: 65, pl: 85}, {ar: "موز مكسرات", en: "Banana Nuts", p: 0, pm: 85, pl: 110}, {ar: "بستاشيو", en: "Pistachio", p: 0, pm: 85, pl: 110}, {ar: "عسل مكسرات", en: "Honey Nuts", p: 0, pm: 80, pl: 100}],
@@ -443,19 +440,19 @@ function showCat(catId){
           <div class="sz-pill ${qtyM>0?"has":""}" id="el_${idM}">
             <span class="sz-n">M</span><span class="sz-p">${item.pm}<span class="sz-mu">ج</span></span>
             <button class="sz-qb" onclick="event.stopPropagation();chg('${idM}','${item.ar} (M)',${item.pm},-1,'${cat.ar}')">−</button>
-            <span class="sz-cnt" id="q_${idM}">${qtyM||""}</span>
+            <span class="sz-cnt" id="q_${idM}">${qtyM}</span>
             <button class="sz-qb" onclick="event.stopPropagation();chg('${idM}','${item.ar} (M)',${item.pm},1,'${cat.ar}')">+</button>
           </div>
           <div class="sz-pill ${qtyL>0?"has":""}" id="el_${idL}">
             <span class="sz-n">L</span><span class="sz-p">${item.pl}<span class="sz-mu">ج</span></span>
             <button class="sz-qb" onclick="event.stopPropagation();chg('${idL}','${item.ar} (L)',${item.pl},-1,'${cat.ar}')">−</button>
-            <span class="sz-cnt" id="q_${idL}">${qtyL||""}</span>
+            <span class="sz-cnt" id="q_${idL}">${qtyL}</span>
             <button class="sz-qb" onclick="event.stopPropagation();chg('${idL}','${item.ar} (L)',${item.pl},1,'${cat.ar}')">+</button>
           </div>
           <div class="sz-pill ${qtyXL>0?"has":""}" id="el_${idXL}">
             <span class="sz-n">XL</span><span class="sz-p">${item.pxl}<span class="sz-mu">ج</span></span>
             <button class="sz-qb" onclick="event.stopPropagation();chg('${idXL}','${item.ar} (XL)',${item.pxl},-1,'${cat.ar}')">−</button>
-            <span class="sz-cnt" id="q_${idXL}">${qtyXL||""}</span>
+            <span class="sz-cnt" id="q_${idXL}">${qtyXL}</span>
             <button class="sz-qb" onclick="event.stopPropagation();chg('${idXL}','${item.ar} (XL)',${item.pxl},1,'${cat.ar}')">+</button>
           </div>
         </div>
@@ -475,13 +472,13 @@ function showCat(catId){
           <div class="sz-pill ${qtyM>0?"has":""}" id="el_${idM}">
             <span class="sz-n">M</span><span class="sz-p">${item.pm}<span class="sz-mu">ج</span></span>
             <button class="sz-qb" onclick="event.stopPropagation();chg('${idM}','${item.ar} (M)',${item.pm},-1,'${cat.ar}')">−</button>
-            <span class="sz-cnt" id="q_${idM}">${qtyM||""}</span>
+            <span class="sz-cnt" id="q_${idM}">${qtyM}</span>
             <button class="sz-qb" onclick="event.stopPropagation();chg('${idM}','${item.ar} (M)',${item.pm},1,'${cat.ar}')">+</button>
           </div>
           <div class="sz-pill ${qtyL>0?"has":""}" id="el_${idL}">
             <span class="sz-n">L</span><span class="sz-p">${item.pl}<span class="sz-mu">ج</span></span>
             <button class="sz-qb" onclick="event.stopPropagation();chg('${idL}','${item.ar} (L)',${item.pl},-1,'${cat.ar}')">−</button>
-            <span class="sz-cnt" id="q_${idL}">${qtyL||""}</span>
+            <span class="sz-cnt" id="q_${idL}">${qtyL}</span>
             <button class="sz-qb" onclick="event.stopPropagation();chg('${idL}','${item.ar} (L)',${item.pl},1,'${cat.ar}')">+</button>
           </div>
         </div>
