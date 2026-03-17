@@ -83,6 +83,17 @@ body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellips
 .addon-item.has-qty{border-color:rgba(46,204,113,.5);background:rgba(26,77,53,.2)}
 
 /* SEASONAL */
+.sz-pill{display:inline-flex;align-items:center;gap:3px;padding:4px 8px;border-radius:10px;border:1px solid rgba(46,204,113,.2);transition:all .15s;white-space:nowrap;flex-shrink:0}
+.sz-pill.has{border-color:rgba(46,204,113,.55);background:rgba(26,77,53,.3)}
+.sz-pill .sz-n{font-size:10px;font-weight:900;color:#888;transition:color .15s}
+.sz-pill .sz-p{font-size:10px;font-weight:700;color:#2ECC71}
+.sz-pill .sz-mu{font-size:9px;color:#555}
+.sz-pill .sz-cnt{font-size:11px;font-weight:900;color:#2ECC71;background:rgba(46,204,113,.15);border-radius:10px;padding:0 5px;min-width:14px;text-align:center;display:none}
+.sz-pill.has .sz-cnt{display:inline-block}
+.sz-pill.has .sz-n{color:#2ECC71}
+.sz-qb{width:20px;height:20px;border-radius:50%;border:1px solid rgba(46,204,113,.4);background:rgba(26,77,53,.2);color:#2ECC71;font-size:14px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0;line-height:1;padding:0}
+.sz-qb:active{background:#2ECC71;color:#000}
+.sz-sep{width:1px;height:16px;background:rgba(255,255,255,.08);flex-shrink:0;margin:0 2px}
 .badge{font-size:9px;background:rgba(46,204,113,.15);color:var(--accent);border:1px solid rgba(46,204,113,.35);border-radius:20px;padding:2px 7px;margin-right:5px;vertical-align:middle}
 
 /* CART FAB */
@@ -175,7 +186,6 @@ footer{text-align:center;padding:40px 20px;border-top:1px solid rgba(255,255,255
       <div class="cat-card" onclick="showCat('pancake')"><span class="ci">🥞</span><span class="ca">بانكيك</span><span class="ce">Pancake</span></div>
       <div class="cat-card" onclick="showCat('croissant')"><span class="ci">🥐</span><span class="ca">كروسان</span><span class="ce">Croissant</span></div>
       <div class="cat-card" onclick="showCat('dessert')"><span class="ci">🍰</span><span class="ca">ديزيرت / حلويات</span><span class="ce">Dessert</span></div>
-    
     
     
     
@@ -302,7 +312,6 @@ footer{text-align:center;padding:40px 20px;border-top:1px solid rgba(255,255,255
     
     
     
-    
     </div>
     <footer>
       <div style="text-align:center;margin-bottom:10px;margin-right:-10px"><svg id="Layer_1" style="width:70px;height:auto;filter: drop-shadow(0 0 6px rgba(255,255,255,0.5)) drop-shadow(0 0 14px rgba(255,255,255,0.3))" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1684.54 1577.16">
@@ -354,34 +363,34 @@ footer{text-align:center;padding:40px 20px;border-top:1px solid rgba(255,255,255
 const WA = "201111385543";
 const cats = {
   hot:{icon:"☕",ar:"مشروبات ساخنة",en:"Hot Drinks",
-    items:[{ar: "قهوة تركي", en: "Turkish Coffee", p: 25, pm: 20, pl: 35, pxl: 35}, {ar: "شاي نكهات", en: "Flavored Tea", p: 20, pm: 15, pl: 20, pxl: 20}, {ar: "سحلب", en: "Sahlab", p: 50, pm: 35, pl: 50, pxl: 50}, {ar: "شاي كرك", en: "Karak Tea", p: 40}, {ar: "إسبريسو", en: "Espresso", p: 45, pm: 35, pl: 45, pxl: 45}, {ar: "أمريكان بلاك", en: "American Black", p: 50}, {ar: "نسكافيه بلاك", en: "Nescafe Black", p: 30}, {ar: "نسكافيه باللبن", en: "Nescafe with Milk", p: 35}, {ar: "ماكياتو", en: "Macchiato", p: 50, pm: 40, pl: 50, pxl: 50}, {ar: "قهوة فرنساوي", en: "French Coffee", p: 35}, {ar: "سبانيش لاتيه", en: "Spanish Latte", p: 95}, {ar: "قهوة بندق", en: "Hazelnut Coffee", p: 35}, {ar: "هوت أبل سيدر", en: "Hot Apple Cider", p: 40}, {ar: "كابتشينو", en: "Cappuccino", p: 65}, {ar: "لاتيه", en: "Latte", p: 65}, {ar: "موكا وايت", en: "Mocha", p: 75}, {ar: "موكا دارك", en: "Mocha", p: 75}, {ar: "هوت شوكليت", en: "Hot Chocolate", p: 60}, {ar: "هوت أوريو", en: "Hot Oreo", p: 65}, {ar: "كراميل لاتيه", en: "Caramel Latte", p: 95}, {ar: "فلات وايت", en: "Flat White", p: 65}, {ar: "هوت وايت شوكليت", en: "Hot White Chocolate", p: 65}, {ar: "هوت لوتس", en: "Hot Lotus", p: 75}, {ar: "هوت أبل سبايس", en: "Hot Apple Spice", p: 50}],
+    items:[{ar: "قهوة تركي", en: "Turkish Coffee", p: 25, pm: 20, pl: 35}, {ar: "شاي نكهات", en: "Flavored Tea", p: 20, pm: 15, pl: 20}, {ar: "سحلب", en: "Sahlab", p: 50, pm: 35, pl: 50}, {ar: "شاي كرك", en: "Karak Tea", p: 40}, {ar: "إسبريسو", en: "Espresso", p: 45, pm: 35, pl: 45}, {ar: "أمريكان بلاك", en: "American Black", p: 50}, {ar: "نسكافيه بلاك", en: "Nescafe Black", p: 30}, {ar: "نسكافيه باللبن", en: "Nescafe with Milk", p: 35}, {ar: "ماكياتو", en: "Macchiato", p: 50, pm: 40, pl: 50}, {ar: "قهوة فرنساوي", en: "French Coffee", p: 35}, {ar: "سبانيش لاتيه", en: "Spanish Latte", p: 95}, {ar: "قهوة بندق", en: "Hazelnut Coffee", p: 35}, {ar: "هوت أبل سيدر", en: "Hot Apple Cider", p: 40}, {ar: "كابتشينو", en: "Cappuccino", p: 65}, {ar: "لاتيه", en: "Latte", p: 65}, {ar: "موكا وايت", en: "Mocha", p: 75}, {ar: "موكا دارك", en: "Mocha", p: 75}, {ar: "هوت شوكليت", en: "Hot Chocolate", p: 60}, {ar: "هوت أوريو", en: "Hot Oreo", p: 65}, {ar: "كراميل لاتيه", en: "Caramel Latte", p: 95}, {ar: "فلات وايت", en: "Flat White", p: 65}, {ar: "هوت وايت شوكليت", en: "Hot White Chocolate", p: 65}, {ar: "هوت لوتس", en: "Hot Lotus", p: 75}, {ar: "هوت أبل سبايس", en: "Hot Apple Spice", p: 50}],
     addons:[{ar: "شوت إسبريسو إضافي", en: "Extra Espresso Shot", p: 30}, {ar: "حليب", en: "Milk", p: 15}, {ar: "حليب مكثف", en: "Condensed Milk", p: 20}, {ar: "صوص", en: "Sauce", p: 20}, {ar: "نوتيلا", en: "Nutella", p: 25}, {ar: "فستق", en: "Pistachio", p: 25}]},
   ice:{icon:"🧊",ar:"آيس كوفي كيوبس",en:"Ice Coffee Cubes",
     items:[{ar: "قهوة بلاك", en: "Black Coffee", p: 55}, {ar: "آيس تي خوخ", en: "Peach Ice Tea", p: 45}, {ar: "فانيليا", en: "Vanilla", p: 75}, {ar: "وايت شوكليت", en: "White Chocolate", p: 90}, {ar: "كراميل", en: "Caramel", p: 85}, {ar: "بندق", en: "Hazelnut", p: 75}, {ar: "جوزهند وايت شوكليت", en: "Coconut White Choco", p: 110}, {ar: "وايت شوكليت كراميل", en: "Caramel White Chocolate", p: 90}, {ar: "نوتيلا", en: "Nutella", p: 95}, {ar: "سبانش لاتيه", en: "Spanish Latte", p: 100}, {ar: "ماتشا", en: "Matcha", p: 90}, {ar: "فستق", en: "Pistachio", p: 75}],
     addons:[{ar: "شوت إسبريسو إضافي", en: "Extra Espresso Shot", p: 30}, {ar: "صوص", en: "Sauce", p: 20}, {ar: "حليب مكثف", en: "Condensed Milk", p: 20}, {ar: "حليب", en: "Milk", p: 15}, {ar: "كوب ثلج", en: "Ice Cup", p: 15}]},
   frapp:{icon:"🧋",ar:"فرابيتشينو",en:"Frappuccino",
-    items:[{ar: "لاتيه", en: "Latte", p: 0, pm: 70, pl: 110, pxl: 110}, {ar: "موكا", en: "Mocha", p: 0, pm: 65, pl: 100, pxl: 100}, {ar: "وايت موكا", en: "White Mocha", p: 0, pm: 80, pl: 110, pxl: 110}, {ar: "كراميل", en: "Caramel", p: 0, pm: 75, pl: 100, pxl: 100}, {ar: "بندق", en: "Hazelnut", p: 0, pm: 80, pl: 100, pxl: 100}, {ar: "دبل إسبريسو", en: "Double Espresso", p: 0, pm: 60, pl: 90, pxl: 90}, {ar: "جوزهند وايت شوكليت", en: "Coconut White Choco", p: 0, pm: 80, pl: 110, pxl: 110}, {ar: "وايت شوكليت كراميل", en: "White Choco Caramel", p: 0, pm: 80, pl: 105, pxl: 105}, {ar: "ماتشا", en: "Matcha", p: 0, pm: 85, pl: 110, pxl: 110}, {ar: "لوتس", en: "Lotus", p: 0, pm: 85, pl: 110, pxl: 110}, {ar: "فستق", en: "Pistachio", p: 0, pm: 85, pl: 100, pxl: 100}],
+    items:[{ar: "لاتيه", en: "Latte", p: 0, pm: 70, pl: 110}, {ar: "موكا", en: "Mocha", p: 0, pm: 65, pl: 100}, {ar: "وايت موكا", en: "White Mocha", p: 0, pm: 80, pl: 110}, {ar: "كراميل", en: "Caramel", p: 0, pm: 75, pl: 100}, {ar: "بندق", en: "Hazelnut", p: 0, pm: 80, pl: 100}, {ar: "دبل إسبريسو", en: "Double Espresso", p: 0, pm: 60, pl: 90}, {ar: "جوزهند وايت شوكليت", en: "Coconut White Choco", p: 0, pm: 80, pl: 110}, {ar: "وايت شوكليت كراميل", en: "White Choco Caramel", p: 0, pm: 80, pl: 105}, {ar: "ماتشا", en: "Matcha", p: 0, pm: 85, pl: 110}, {ar: "لوتس", en: "Lotus", p: 0, pm: 85, pl: 110}, {ar: "فستق", en: "Pistachio", p: 0, pm: 85, pl: 100}],
     addons:[{ar: "شوت إسبريسو إضافي", en: "Extra Espresso Shot", p: 30}, {ar: "صوص", en: "Sauce", p: 20}, {ar: "نوتيلا", en: "Nutella", p: 25}, {ar: "فستق", en: "Pistachio", p: 25}, {ar: "حليب مكثف", en: "Condensed Milk", p: 20}]},
   milkshake:{icon:"🥛",ar:"ميلك شيك",en:"Milkshake",
-    items:[{ar: "شوكليت", en: "Chocolate", p: 0, pm: 50, pl: 75, pxl: 75}, {ar: "فانيلا", en: "Vanilla", p: 0, pm: 55, pl: 75, pxl: 75}, {ar: "فراولة", en: "Strawberry", p: 0, pm: 55, pl: 75, pxl: 75}, {ar: "مانجو", en: "Mango", p: 0, pm: 55, pl: 75, pxl: 75}, {ar: "كراميل", en: "Caramel", p: 0, pm: 55, pl: 65, pxl: 65}, {ar: "بلوبيري", en: "Blueberry", p: 0, pm: 55, pl: 75, pxl: 75}, {ar: "أوريو", en: "Oreo", p: 0, pm: 55, pl: 75, pxl: 75}, {ar: "أوريو وايت شوكليت", en: "Oreo White Choco", p: 0, pm: 60, pl: 85, pxl: 85}, {ar: "باونتي", en: "Bounty", p: 0, pm: 75, pl: 95, pxl: 95}, {ar: "لوتس", en: "Lotus", p: 0, pm: 85, pl: 105, pxl: 105}, {ar: "سنيكرز", en: "Snickers", p: 0, pm: 75, pl: 95, pxl: 95}, {ar: "فستق", en: "Pistachio", p: 0, pm: 85, pl: 105, pxl: 105}],
+    items:[{ar: "شوكليت", en: "Chocolate", p: 0, pm: 50, pl: 75}, {ar: "فانيلا", en: "Vanilla", p: 0, pm: 55, pl: 75}, {ar: "فراولة", en: "Strawberry", p: 0, pm: 55, pl: 75}, {ar: "مانجو", en: "Mango", p: 0, pm: 55, pl: 75}, {ar: "كراميل", en: "Caramel", p: 0, pm: 55, pl: 65}, {ar: "بلوبيري", en: "Blueberry", p: 0, pm: 55, pl: 75}, {ar: "أوريو", en: "Oreo", p: 0, pm: 55, pl: 75}, {ar: "أوريو وايت شوكليت", en: "Oreo White Choco", p: 0, pm: 60, pl: 85}, {ar: "باونتي", en: "Bounty", p: 0, pm: 75, pl: 95}, {ar: "لوتس", en: "Lotus", p: 0, pm: 85, pl: 105}, {ar: "سنيكرز", en: "Snickers", p: 0, pm: 75, pl: 95}, {ar: "فستق", en: "Pistachio", p: 0, pm: 85, pl: 105}],
     addons:[{ar: "صوص", en: "Sauce", p: 20}, {ar: "نوتيلا", en: "Nutella", p: 25}, {ar: "فستق", en: "Pistachio", p: 25}, {ar: "حليب مكثف", en: "Condensed Milk", p: 20}]},
   smoothie:{icon:"🥤",ar:"سموزي",en:"Smoothie",
-    items:[{ar: "ليمون نعناع", en: "Mint Lemon", p: 0, pm: 35, pl: 55, pxl: 55}, {ar: "تفاح", en: "Apple", p: 0, pm: 35, pl: 55, pxl: 55}, {ar: "بطيخ", en: "Watermelon", p: 0, pm: 35, pl: 55, pxl: 55, b: 1}, {ar: "بلوبيري", en: "Blueberry", p: 0, pm: 35, pl: 55, pxl: 55}, {ar: "باشن فروت", en: "Passion Fruit", p: 0, pm: 35, pl: 55, pxl: 55}, {ar: "بيري كولا", en: "Cola Berry", p: 0, pm: 35, pl: 55, pxl: 55}, {ar: "مانجو", en: "Mango", p: 0, pm: 40, pl: 55, pxl: 55}, {ar: "مانجو خوخ", en: "Peach Mango", p: 0, pm: 40, pl: 65, pxl: 65}, {ar: "بلو كولادا", en: "Blue Colada", p: 0, pm: 40, pl: 55, pxl: 55}, {ar: "خوخ", en: "Peach", p: 0, pm: 45, pl: 65, pxl: 65}, {ar: "ميكس بيري", en: "Mix Berry", p: 0, pm: 35, pl: 55, pxl: 55}, {ar: "جيلي كولا", en: "Cola Jelly", p: 0, pm: 35, pl: 55, pxl: 55}, {ar: "مانجو كيوي", en: "Mango Kiwi", p: 0, pm: 55, pl: 75, pxl: 75}],
+    items:[{ar: "ليمون نعناع", en: "Mint Lemon", p: 0, pm: 35, pl: 55}, {ar: "تفاح", en: "Apple", p: 0, pm: 35, pl: 55}, {ar: "بطيخ", en: "Watermelon", p: 0, pm: 35, pl: 55, b: 1}, {ar: "بلوبيري", en: "Blueberry", p: 0, pm: 35, pl: 55}, {ar: "باشن فروت", en: "Passion Fruit", p: 0, pm: 35, pl: 55}, {ar: "بيري كولا", en: "Cola Berry", p: 0, pm: 35, pl: 55}, {ar: "مانجو", en: "Mango", p: 0, pm: 40, pl: 55}, {ar: "مانجو خوخ", en: "Peach Mango", p: 0, pm: 40, pl: 65}, {ar: "بلو كولادا", en: "Blue Colada", p: 0, pm: 40, pl: 55}, {ar: "خوخ", en: "Peach", p: 0, pm: 45, pl: 65}, {ar: "ميكس بيري", en: "Mix Berry", p: 0, pm: 35, pl: 55}, {ar: "جيلي كولا", en: "Cola Jelly", p: 0, pm: 35, pl: 55}, {ar: "مانجو كيوي", en: "Mango Kiwi", p: 0, pm: 55, pl: 75}],
     addons:[{ar: "صوص", en: "Sauce", p: 20}, {ar: "عسل", en: "Honey", p: 15}, {ar: "حليب مكثف", en: "Condensed Milk", p: 20}]},
   fresh:{icon:"🍹",ar:"عصائر فريش",en:"Fresh Juices",
-    items:[{ar: "جوافة", en: "Guava", p: 30, pm: 45, pl: 60, pxl: 60}, {ar: "بطيخ", en: "Watermelon", p: 0, pm: 40, pl: 50, pxl: 50, b: 1}, {ar: "برتقال", en: "Orange", p: 0, pm: 35, pl: 45, pxl: 45}, {ar: "فراولة", en: "Strawberry", p: 0, pm: 45, pl: 60, pxl: 60}, {ar: "موز باللبن", en: "Banana with Milk", p: 0, pm: 50, pl: 65, pxl: 65}, {ar: "بلح باللبن", en: "Dates with Milk", p: 0, pm: 45, pl: 55, pxl: 55}, {ar: "ليمون نعناع", en: "Mint Lemon", p: 0, pm: 35, pl: 55, pxl: 55}, {ar: "مانجو", en: "Mango", p: 0, pm: 45, pl: 60, pxl: 60}, {ar: "زبادي فواكه", en: "Yogurt Fruit", p: 0, pm: 50, pl: 65, pxl: 65}, {ar: "مانجو كيوي", en: "Mango Kiwi", p: 0, pm: 50, pl: 65, pxl: 65}, {ar: "كيوي", en: "Kiwi", p: 0, pm: 55, pl: 70, pxl: 70}, {ar: "كاجو فانيليا", en: "Cashew Vanilla", p: 0, pm: 75, pl: 90, pxl: 90}, {ar: "كراميلة مانجو موز", en: "Caramel Mango Banana", p: 0, pm: 65, pl: 75, pxl: 75}, {ar: "كاجو فانيليا جوز", en: "Cashew Vanilla Nut", p: 0, pm: 95, pl: 110, pxl: 110}, {ar: "أفوكادو", en: "Avocado", p: 0, pm: 75, pl: 90, pxl: 90}, {ar: "أفوكادو كاجو", en: "Avocado Cashew", p: 0, pm: 90, pl: 110, pxl: 110}],
+    items:[{ar: "جوافة", en: "Guava", p: 30, pm: 45, pl: 60}, {ar: "بطيخ", en: "Watermelon", p: 0, pm: 40, pl: 50, b: 1}, {ar: "برتقال", en: "Orange", p: 0, pm: 35, pl: 45}, {ar: "فراولة", en: "Strawberry", p: 0, pm: 45, pl: 60}, {ar: "موز باللبن", en: "Banana with Milk", p: 0, pm: 50, pl: 65}, {ar: "بلح باللبن", en: "Dates with Milk", p: 0, pm: 45, pl: 55}, {ar: "ليمون نعناع", en: "Mint Lemon", p: 0, pm: 35, pl: 55}, {ar: "مانجو", en: "Mango", p: 0, pm: 45, pl: 60}, {ar: "زبادي فواكه", en: "Yogurt Fruit", p: 0, pm: 50, pl: 65}, {ar: "مانجو كيوي", en: "Mango Kiwi", p: 0, pm: 50, pl: 65}, {ar: "كيوي", en: "Kiwi", p: 0, pm: 55, pl: 70}, {ar: "كاجو فانيليا", en: "Cashew Vanilla", p: 0, pm: 75, pl: 90}, {ar: "كراميلة مانجو موز", en: "Caramel Mango Banana", p: 0, pm: 65, pl: 75}, {ar: "كاجو فانيليا جوز", en: "Cashew Vanilla Nut", p: 0, pm: 95, pl: 110}, {ar: "أفوكادو", en: "Avocado", p: 0, pm: 75, pl: 90}, {ar: "أفوكادو كاجو", en: "Avocado Cashew", p: 0, pm: 90, pl: 110}],
     addons:[{ar: "عسل", en: "Honey", p: 15}, {ar: "حليب", en: "Milk", p: 15}, {ar: "صوص", en: "Sauce", p: 20}, {ar: "حليب مكثف", en: "Condensed Milk", p: 20}]},
   soda:{icon:"🫧",ar:"موخيتو",en:"Mokhito",
-    items:[{ar: "موهيتو", en: "Mojito", p: 0, pm: 50, pl: 65, pxl: 65}, {ar: "جرين أبل", en: "Green Apple", p: 0, pm: 50, pl: 65, pxl: 65}, {ar: "فراولة", en: "Strawberry", p: 0, pm: 50, pl: 65, pxl: 65}, {ar: "شيري", en: "Cherry", p: 0, pm: 50, pl: 65, pxl: 65}, {ar: "باشن", en: "Passion", p: 0, pm: 50, pl: 65, pxl: 65}, {ar: "بيري كولا", en: "Berry Cola", p: 0, pm: 50, pl: 65, pxl: 65}, {ar: "بلاك بيري", en: "Black Berry", p: 0, pm: 50, pl: 65, pxl: 65}, {ar: "رمان", en: "Pomegranate", p: 0, pm: 50, pl: 65, pxl: 65}, {ar: "بلوبيري", en: "Blueberry", p: 0, pm: 50, pl: 65, pxl: 65}, {ar: "سوفت بلو كيوراساو", en: "Soft Blue Curacao", p: 0, pm: 50, pl: 65, pxl: 65}, {ar: "ريد بول نكهات", en: "Red Bull Flavored", p: 0, pm: 95, pl: 110, pxl: 110}],
+    items:[{ar: "موهيتو", en: "Mojito", p: 0, pm: 50, pl: 65}, {ar: "جرين أبل", en: "Green Apple", p: 0, pm: 50, pl: 65}, {ar: "فراولة", en: "Strawberry", p: 0, pm: 50, pl: 65}, {ar: "شيري", en: "Cherry", p: 0, pm: 50, pl: 65}, {ar: "باشن", en: "Passion", p: 0, pm: 50, pl: 65}, {ar: "بيري كولا", en: "Berry Cola", p: 0, pm: 50, pl: 65}, {ar: "بلاك بيري", en: "Black Berry", p: 0, pm: 50, pl: 65}, {ar: "رمان", en: "Pomegranate", p: 0, pm: 50, pl: 65}, {ar: "بلوبيري", en: "Blueberry", p: 0, pm: 50, pl: 65}, {ar: "سوفت بلو كيوراساو", en: "Soft Blue Curacao", p: 0, pm: 50, pl: 65}, {ar: "ريد بول نكهات", en: "Red Bull Flavored", p: 0, pm: 95, pl: 110}],
     addons:[{ar: "صوص", en: "Sauce", p: 20}, {ar: "كوب ثلج", en: "Ice Cup", p: 15}]},
   icecream:{icon:"🍦",ar:"آيس كريم",en:"Ice Cream",
-    items:[{ar: "إسبريسو جيلاتو", en: "Espresso Gelato", p: 0, pm: 45, pl: 70, pxl: 70}, {ar: "فانيلا", en: "Vanilla", p: 0, pm: 45, pl: 70, pxl: 70}, {ar: "تفاح", en: "Apple", p: 0, pm: 45, pl: 70, pxl: 70}, {ar: "باشن", en: "Passion", p: 0, pm: 45, pl: 70, pxl: 70}, {ar: "فراولة", en: "Strawberry", p: 0, pm: 45, pl: 70, pxl: 70}, {ar: "بلوبيري", en: "Blueberry", p: 0, pm: 45, pl: 70, pxl: 70}, {ar: "كراميل", en: "Caramel", p: 0, pm: 45, pl: 70, pxl: 70}, {ar: "شوكولاتة", en: "Chocolate", p: 0, pm: 45, pl: 70, pxl: 70}, {ar: "وايت شوكليت", en: "White Chocolate", p: 0, pm: 45, pl: 70, pxl: 70}, {ar: "نوتيلا", en: "Nutella", p: 0, pm: 45, pl: 70, pxl: 70}, {ar: "أوريو", en: "Oreo", p: 0, pm: 45, pl: 70, pxl: 70}, {ar: "بستاشيو", en: "Pistachio", p: 0, pm: 65, pl: 95, pxl: 95}],
+    items:[{ar: "إسبريسو جيلاتو", en: "Espresso Gelato", p: 0, pm: 45, pl: 70}, {ar: "فانيلا", en: "Vanilla", p: 0, pm: 45, pl: 70}, {ar: "تفاح", en: "Apple", p: 0, pm: 45, pl: 70}, {ar: "باشن", en: "Passion", p: 0, pm: 45, pl: 70}, {ar: "فراولة", en: "Strawberry", p: 0, pm: 45, pl: 70}, {ar: "بلوبيري", en: "Blueberry", p: 0, pm: 45, pl: 70}, {ar: "كراميل", en: "Caramel", p: 0, pm: 45, pl: 70}, {ar: "شوكولاتة", en: "Chocolate", p: 0, pm: 45, pl: 70}, {ar: "وايت شوكليت", en: "White Chocolate", p: 0, pm: 45, pl: 70}, {ar: "نوتيلا", en: "Nutella", p: 0, pm: 45, pl: 70}, {ar: "أوريو", en: "Oreo", p: 0, pm: 45, pl: 70}, {ar: "بستاشيو", en: "Pistachio", p: 0, pm: 65, pl: 95}],
     addons:[{ar: "صوص", en: "Sauce", p: 20}, {ar: "نوتيلا", en: "Nutella", p: 25}, {ar: "فستق", en: "Pistachio", p: 25}, {ar: "كاجو", en: "Cashew", p: 35}, {ar: "عسل", en: "Honey", p: 15}, {ar: "حليب مكثف", en: "Condensed Milk", p: 20}, {ar: "بوبا", en: "Boba", p: 20}]},
   waffle:{icon:"🧇",ar:"وافل",en:"Waffle",
-    items:[{ar: "تفاح", en: "Apple", p: 0, pm: 40, pl: 75, pxl: 75}, {ar: "موز", en: "Banana", p: 0, pm: 40, pl: 75, pxl: 75}, {ar: "فراولة", en: "Strawberry", p: 0, pm: 45, pl: 80, pxl: 80}, {ar: "مانجو", en: "Mango", p: 0, pm: 45, pl: 85, pxl: 85}, {ar: "أناناس", en: "Pineapple", p: 0, pm: 50, pl: 85, pxl: 85}, {ar: "كيوي", en: "Kiwi", p: 0, pm: 50, pl: 85, pxl: 85}, {ar: "بلوبيري", en: "Blueberry", p: 0, pm: 50, pl: 85, pxl: 85}, {ar: "كراميل", en: "Caramel", p: 0, pm: 55, pl: 90, pxl: 90}, {ar: "وايت شوكليت", en: "White Chocolate", p: 0, pm: 55, pl: 90, pxl: 90}, {ar: "دارك شوكليت", en: "Dark Chocolate", p: 0, pm: 55, pl: 90, pxl: 90}, {ar: "نوتيلا", en: "Nutella", p: 0, pm: 60, pl: 90, pxl: 90}, {ar: "أوريو", en: "Oreo", p: 0, pm: 65, pl: 85, pxl: 85}, {ar: "لوتس", en: "Lotus", p: 0, pm: 65, pl: 85, pxl: 85}, {ar: "موز مكسرات", en: "Banana Nuts", p: 0, pm: 85, pl: 110, pxl: 110}, {ar: "بستاشيو", en: "Pistachio", p: 0, pm: 85, pl: 110, pxl: 110}, {ar: "عسل مكسرات", en: "Honey Nuts", p: 0, pm: 80, pl: 100, pxl: 100}],
+    items:[{ar: "تفاح", en: "Apple", p: 0, pm: 40, pl: 75}, {ar: "موز", en: "Banana", p: 0, pm: 40, pl: 75}, {ar: "فراولة", en: "Strawberry", p: 0, pm: 45, pl: 80}, {ar: "مانجو", en: "Mango", p: 0, pm: 45, pl: 85}, {ar: "أناناس", en: "Pineapple", p: 0, pm: 50, pl: 85}, {ar: "كيوي", en: "Kiwi", p: 0, pm: 50, pl: 85}, {ar: "بلوبيري", en: "Blueberry", p: 0, pm: 50, pl: 85}, {ar: "كراميل", en: "Caramel", p: 0, pm: 55, pl: 90}, {ar: "وايت شوكليت", en: "White Chocolate", p: 0, pm: 55, pl: 90}, {ar: "دارك شوكليت", en: "Dark Chocolate", p: 0, pm: 55, pl: 90}, {ar: "نوتيلا", en: "Nutella", p: 0, pm: 60, pl: 90}, {ar: "أوريو", en: "Oreo", p: 0, pm: 65, pl: 85}, {ar: "لوتس", en: "Lotus", p: 0, pm: 65, pl: 85}, {ar: "موز مكسرات", en: "Banana Nuts", p: 0, pm: 85, pl: 110}, {ar: "بستاشيو", en: "Pistachio", p: 0, pm: 85, pl: 110}, {ar: "عسل مكسرات", en: "Honey Nuts", p: 0, pm: 80, pl: 100}],
     addons:[{ar: "صوص", en: "Sauce", p: 20}, {ar: "نوتيلا", en: "Nutella", p: 25}, {ar: "فستق", en: "Pistachio", p: 25}, {ar: "كاجو", en: "Cashew", p: 35}, {ar: "عسل", en: "Honey", p: 15}, {ar: "حليب مكثف", en: "Condensed Milk", p: 20}]},
   pancake:{icon:"🥞",ar:"بانكيك",en:"Pancake",
-    items:[{ar: "تفاح", en: "Apple", p: 0, pm: 35, pl: 70, pxl: 70}, {ar: "موز", en: "Banana", p: 0, pm: 35, pl: 70, pxl: 70}, {ar: "فراولة", en: "Strawberry", p: 0, pm: 40, pl: 75, pxl: 75}, {ar: "مانجو", en: "Mango", p: 0, pm: 40, pl: 75, pxl: 75}, {ar: "أناناس", en: "Pineapple", p: 0, pm: 45, pl: 80, pxl: 80}, {ar: "كيوي", en: "Kiwi", p: 0, pm: 45, pl: 80, pxl: 80}, {ar: "بلوبيري", en: "Blueberry", p: 0, pm: 45, pl: 80, pxl: 80}, {ar: "كراميل", en: "Caramel", p: 0, pm: 50, pl: 85, pxl: 85}, {ar: "وايت شوكليت", en: "White Chocolate", p: 0, pm: 50, pl: 85, pxl: 85}, {ar: "دارك شوكليت", en: "Dark Chocolate", p: 0, pm: 50, pl: 85, pxl: 85}, {ar: "نوتيلا", en: "Nutella", p: 0, pm: 55, pl: 90, pxl: 90}, {ar: "أوريو", en: "Oreo", p: 0, pm: 55, pl: 90, pxl: 90}, {ar: "لوتس", en: "Lotus", p: 0, pm: 55, pl: 90, pxl: 90}, {ar: "موز مكسرات", en: "Banana Nuts", p: 0, pm: 60, pl: 95, pxl: 95}, {ar: "بستاشيو", en: "Pistachio", p: 0, pm: 85, pl: 110, pxl: 110}, {ar: "عسل مكسرات", en: "Honey Nuts", p: 0, pm: 60, pl: 95, pxl: 95}],
+    items:[{ar: "تفاح", en: "Apple", p: 0, pm: 35, pl: 70}, {ar: "موز", en: "Banana", p: 0, pm: 35, pl: 70}, {ar: "فراولة", en: "Strawberry", p: 0, pm: 40, pl: 75}, {ar: "مانجو", en: "Mango", p: 0, pm: 40, pl: 75}, {ar: "أناناس", en: "Pineapple", p: 0, pm: 45, pl: 80}, {ar: "كيوي", en: "Kiwi", p: 0, pm: 45, pl: 80}, {ar: "بلوبيري", en: "Blueberry", p: 0, pm: 45, pl: 80}, {ar: "كراميل", en: "Caramel", p: 0, pm: 50, pl: 85}, {ar: "وايت شوكليت", en: "White Chocolate", p: 0, pm: 50, pl: 85}, {ar: "دارك شوكليت", en: "Dark Chocolate", p: 0, pm: 50, pl: 85}, {ar: "نوتيلا", en: "Nutella", p: 0, pm: 55, pl: 90}, {ar: "أوريو", en: "Oreo", p: 0, pm: 55, pl: 90}, {ar: "لوتس", en: "Lotus", p: 0, pm: 55, pl: 90}, {ar: "موز مكسرات", en: "Banana Nuts", p: 0, pm: 60, pl: 95}, {ar: "بستاشيو", en: "Pistachio", p: 0, pm: 85, pl: 110}, {ar: "عسل مكسرات", en: "Honey Nuts", p: 0, pm: 60, pl: 95}],
     addons:[{ar: "صوص", en: "Sauce", p: 20}, {ar: "نوتيلا", en: "Nutella", p: 25}, {ar: "بستاشيو", en: "Pistachio", p: 25}, {ar: "كاجو", en: "Cashew", p: 35}, {ar: "عسل", en: "Honey", p: 15}, {ar: "حليب مكثف", en: "Condensed Milk", p: 20}]},
   croissant:{icon:"🥐",ar:"كروسان",en:"Croissant",
     items:[{ar: "سادة", en: "Plain", p: 25}, {ar: "جبنة", en: "Cheese", p: 35}, {ar: "دارك شوكليت", en: "Dark Chocolate", p: 40}, {ar: "وايت شوكليت", en: "White Chocolate", p: 40}, {ar: "نوتيلا", en: "Nutella", p: 45}, {ar: "أوريو", en: "Oreo", p: 45}, {ar: "لوتس", en: "Lotus", p: 50}, {ar: "آيس كريم فانيلا", en: "Vanilla Ice Cream", p: 65}, {ar: "آيس كريم تفاح", en: "Apple Ice Cream", p: 65}, {ar: "آيس كريم باشن", en: "Passion Ice Cream", p: 65}, {ar: "آيس كريم فراولة", en: "Strawberry Ice Cream", p: 65}, {ar: "آيس كريم بلوبيري", en: "Blueberry Ice Cream", p: 65}, {ar: "آيس كريم كراميل", en: "Caramel Ice Cream", p: 65}, {ar: "آيس كريم شوكولاتة", en: "Chocolate Ice Cream", p: 65}, {ar: "آيس كريم وايت شوكليت", en: "White Choco Ice Cream", p: 65}, {ar: "آيس كريم إسبريسو جيلاتو", en: "Espresso Gelato", p: 65}, {ar: "آيس كريم أوريو", en: "Oreo Ice Cream", p: 65}, {ar: "آيس كريم نوتيلا", en: "Nutella Ice Cream", p: 65}, {ar: "آيس كريم فستق", en: "Pistachio Ice Cream", p: 65}],
@@ -422,38 +431,30 @@ function showCat(catId){
       const qtyM = cart[idM] ? cart[idM].qty : 0;
       const qtyL = cart[idL] ? cart[idL].qty : 0;
       const qtyXL = cart[idXL] ? cart[idXL].qty : 0;
-      html += `<div class="menu-item" id="el_${idM}${idL}${idXL}" style="flex-direction:column;align-items:stretch;gap:10px">
-        <div style="display:flex;justify-content:space-between;align-items:center">
-          <div class="item-left">
-            <div class="item-name-ar">${item.ar}${badge}</div>
-            <div class="item-name-en">${item.en}</div>
-          </div>
+      const anyQty = (qtyM+qtyL+qtyXL) > 0;
+      html += `<div class="menu-item ${anyQty?"has-qty":""}" id="el_${idM}${idL}${idXL}">
+        <div class="item-left" style="flex:1;min-width:0">
+          <div class="item-name-ar">${item.ar}${badge}</div>
+          <div class="item-name-en">${item.en}</div>
         </div>
-        <div style="display:flex;gap:8px;width:100%">
-          <div style="flex:1;background:rgba(255,255,255,0.04);border-radius:10px;padding:8px;text-align:center">
-            <div class="item-price" style="font-size:13px;margin-bottom:6px">M · ${item.pm} <span>ج</span></div>
-            <div class="qty-row" style="justify-content:center">
-              <button class="qty-btn" onclick="chg('${idM}','${item.ar} (M)',${item.pm},-1,'${cat.ar}')">−</button>
-              <span class="qty-num" id="q_${idM}">${qtyM}</span>
-              <button class="qty-btn" onclick="chg('${idM}','${item.ar} (M)',${item.pm},1,'${cat.ar}')">+</button>
-            </div>
-          </div>
-          <div style="flex:1;background:rgba(255,255,255,0.04);border-radius:10px;padding:8px;text-align:center">
-            <div class="item-price" style="font-size:13px;margin-bottom:6px">L · ${item.pl} <span>ج</span></div>
-            <div class="qty-row" style="justify-content:center">
-              <button class="qty-btn" onclick="chg('${idL}','${item.ar} (L)',${item.pl},-1,'${cat.ar}')">−</button>
-              <span class="qty-num" id="q_${idL}">${qtyL}</span>
-              <button class="qty-btn" onclick="chg('${idL}','${item.ar} (L)',${item.pl},1,'${cat.ar}')">+</button>
-            </div>
-          </div>
-          <div style="flex:1;background:rgba(255,255,255,0.04);border-radius:10px;padding:8px;text-align:center">
-            <div class="item-price" style="font-size:13px;margin-bottom:6px">XL · ${item.pxl} <span>ج</span></div>
-            <div class="qty-row" style="justify-content:center">
-              <button class="qty-btn" onclick="chg('${idXL}','${item.ar} (XL)',${item.pxl},-1,'${cat.ar}')">−</button>
-              <span class="qty-num" id="q_${idXL}">${qtyXL}</span>
-              <button class="qty-btn" onclick="chg('${idXL}','${item.ar} (XL)',${item.pxl},1,'${cat.ar}')">+</button>
-            </div>
-          </div>
+        <div class="sz-sep"></div>
+        <div class="sz-pill ${qtyM>0?"has":""}" id="el_${idM}">
+          <span class="sz-n">M</span><span class="sz-p">${item.pm}<span class="sz-mu">ج</span></span>
+          <button class="sz-qb" onclick="event.stopPropagation();chg('${idM}','${item.ar} (M)',${item.pm},-1,'${cat.ar}')">−</button>
+          <span class="sz-cnt" id="q_${idM}">${qtyM||""}</span>
+          <button class="sz-qb" onclick="event.stopPropagation();chg('${idM}','${item.ar} (M)',${item.pm},1,'${cat.ar}')">+</button>
+        </div>
+        <div class="sz-pill ${qtyL>0?"has":""}" id="el_${idL}">
+          <span class="sz-n">L</span><span class="sz-p">${item.pl}<span class="sz-mu">ج</span></span>
+          <button class="sz-qb" onclick="event.stopPropagation();chg('${idL}','${item.ar} (L)',${item.pl},-1,'${cat.ar}')">−</button>
+          <span class="sz-cnt" id="q_${idL}">${qtyL||""}</span>
+          <button class="sz-qb" onclick="event.stopPropagation();chg('${idL}','${item.ar} (L)',${item.pl},1,'${cat.ar}')">+</button>
+        </div>
+        <div class="sz-pill ${qtyXL>0?"has":""}" id="el_${idXL}">
+          <span class="sz-n">XL</span><span class="sz-p">${item.pxl}<span class="sz-mu">ج</span></span>
+          <button class="sz-qb" onclick="event.stopPropagation();chg('${idXL}','${item.ar} (XL)',${item.pxl},-1,'${cat.ar}')">−</button>
+          <span class="sz-cnt" id="q_${idXL}">${qtyXL||""}</span>
+          <button class="sz-qb" onclick="event.stopPropagation();chg('${idXL}','${item.ar} (XL)',${item.pxl},1,'${cat.ar}')">+</button>
         </div>
       </div>`;
     } else if(item.pm && item.pl){
@@ -461,30 +462,24 @@ function showCat(catId){
       const idL = mkId(catId,"i",idx)+"_l";
       const qtyM = cart[idM] ? cart[idM].qty : 0;
       const qtyL = cart[idL] ? cart[idL].qty : 0;
-      html += `<div class="menu-item" id="el_${idM}${idL}" style="flex-direction:column;align-items:stretch;gap:10px">
-        <div style="display:flex;justify-content:space-between;align-items:center">
-          <div class="item-left">
-            <div class="item-name-ar">${item.ar}${badge}</div>
-            <div class="item-name-en">${item.en}</div>
-          </div>
+      const anyQty = (qtyM+qtyL) > 0;
+      html += `<div class="menu-item ${anyQty?"has-qty":""}" id="el_${idM}${idL}">
+        <div class="item-left" style="flex:1;min-width:0">
+          <div class="item-name-ar">${item.ar}${badge}</div>
+          <div class="item-name-en">${item.en}</div>
         </div>
-        <div style="display:flex;gap:8px;width:100%">
-          <div style="flex:1;background:rgba(255,255,255,0.04);border-radius:10px;padding:8px;text-align:center">
-            <div class="item-price" style="font-size:13px;margin-bottom:6px">M · ${item.pm} <span>ج</span></div>
-            <div class="qty-row" style="justify-content:center">
-              <button class="qty-btn" onclick="chg('${idM}','${item.ar} (M)',${item.pm},-1,'${cat.ar}')">−</button>
-              <span class="qty-num" id="q_${idM}">${qtyM}</span>
-              <button class="qty-btn" onclick="chg('${idM}','${item.ar} (M)',${item.pm},1,'${cat.ar}')">+</button>
-            </div>
-          </div>
-          <div style="flex:1;background:rgba(255,255,255,0.04);border-radius:10px;padding:8px;text-align:center">
-            <div class="item-price" style="font-size:13px;margin-bottom:6px">L · ${item.pl} <span>ج</span></div>
-            <div class="qty-row" style="justify-content:center">
-              <button class="qty-btn" onclick="chg('${idL}','${item.ar} (L)',${item.pl},-1,'${cat.ar}')">−</button>
-              <span class="qty-num" id="q_${idL}">${qtyL}</span>
-              <button class="qty-btn" onclick="chg('${idL}','${item.ar} (L)',${item.pl},1,'${cat.ar}')">+</button>
-            </div>
-          </div>
+        <div class="sz-sep"></div>
+        <div class="sz-pill ${qtyM>0?"has":""}" id="el_${idM}">
+          <span class="sz-n">M</span><span class="sz-p">${item.pm}<span class="sz-mu">ج</span></span>
+          <button class="sz-qb" onclick="event.stopPropagation();chg('${idM}','${item.ar} (M)',${item.pm},-1,'${cat.ar}')">−</button>
+          <span class="sz-cnt" id="q_${idM}">${qtyM||""}</span>
+          <button class="sz-qb" onclick="event.stopPropagation();chg('${idM}','${item.ar} (M)',${item.pm},1,'${cat.ar}')">+</button>
+        </div>
+        <div class="sz-pill ${qtyL>0?"has":""}" id="el_${idL}">
+          <span class="sz-n">L</span><span class="sz-p">${item.pl}<span class="sz-mu">ج</span></span>
+          <button class="sz-qb" onclick="event.stopPropagation();chg('${idL}','${item.ar} (L)',${item.pl},-1,'${cat.ar}')">−</button>
+          <span class="sz-cnt" id="q_${idL}">${qtyL||""}</span>
+          <button class="sz-qb" onclick="event.stopPropagation();chg('${idL}','${item.ar} (L)',${item.pl},1,'${cat.ar}')">+</button>
         </div>
       </div>`;
     } else {
